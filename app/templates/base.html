@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% if title %}
+        <title> {{ title }} - Shoppinglist List </title>
+    {% else %}
+        <title>Welcome to the shopping List</title>
+    {% endif %}
+
+    {% block header %}
+        
+    {% endblock header %}
+
+</head>
+
+<body style="float:left; padding:0; background-color: #fff; width:100%">
+
+    {% block nav %}
+
+    {% endblock nav %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}
+</body>
+
+</html>

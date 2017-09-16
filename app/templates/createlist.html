@@ -1,0 +1,54 @@
+{% extends "baseloggedin.html" %}
+{% block content %}
+
+<div class="container col-xs-12">
+    
+        <!--    flash message logic    -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+    
+        {% for message in messages %}
+        <div class="alert alert-info message col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+            <strong><i class="fa fa-info-circle"></i></strong> {{ message.message }}
+        </div>
+    
+        {% endfor %}
+    
+        {% endif %}
+        {% endwith %}
+
+        <div class="jumbotron">
+            <h1>My Shopping List</h1>
+                 
+            <form action = "/createlist" method = "post">
+                
+                     {{ form.hidden_tag() }}
+                <fieldset>
+                    <legend>shopping List Name</legend>
+
+                    <div class="jumbotron">
+                        <div class="form-group">
+        
+                            {% for error in form.listname.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}<br>
+                            <br>List Name
+                            {{ form.listname(placeholder="groceries", class="form-control", required="required") }}
+        
+                        </div>
+                    </div>
+                   
+                    <div class="col-xs-12">
+                         
+                        <div class="form-group">
+                            <br>
+                            <center>
+                                <button type="submit" name="Submit">Create Shopping List</button>
+                            </center>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+</div>
+{% endblock %}

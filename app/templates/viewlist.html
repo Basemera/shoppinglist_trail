@@ -1,0 +1,130 @@
+{% extends "baseloggedin.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+{% for message in messages %}
+<div class = "row">
+<div class="col-sm-4">
+ {{ message.message }}
+</div>
+</div>
+
+{% endfor %}
+
+{% endif %}
+{% endwith %}
+<div class = "row">
+<div class="col-sm-5">
+        
+            
+            <div class="col-sm-4 text-center">
+        
+               
+                <div class="col-sm-4">
+                    <h4 class="col-sm-10">Shopping lists</h4>
+                    <a href="/createlist" class="col-sm-10"></a>
+                </div>
+            
+                <div class="col-sm-12">
+        
+                    <h1>To view items click a shopping list</h1>
+        
+        
+        
+                    {% if lists %}
+        
+                    {% for item in lists %}
+        
+                   
+                    {% if user == lists[item]['userid'] %}
+        
+                  
+                    <div class="col-sm-10">
+        
+                        <div id="{{ lists[item]['list_id'] }}">
+                            <a href = 'additem'>{{ lists[item]['listname'] }}</a>
+                        </div>
+                        <div style="padding:0">
+                                <a href="/updatelist/{{ lists[item]['list_id'] }}" style="padding:5px 0">edit list
+                                    
+                                </a>
+                            </div>
+                        <div class ="col-sm-10">
+                        <table class = "table table-striped table-bordered table table-hover table-responsive" border = 4>
+                            <thead>
+                                <tr>>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                
+                                {% if items %}
+                                
+                        
+                        
+                                        {% for a in items %}
+                        
+                                    
+                                        {% if user == items[a]['userid']  %}
+                                            
+        
+                                        
+                        
+                                       
+                                        
+                        
+                                            
+                                            
+                                                
+                                                    <tr>
+                                                        
+                                                                                                                    <td><label class="col-sm-4"><input type="checkbox">  {% if items[a]["checked"] %} checked {% endif %} {{ items[a]['itemname'] }}</label></td>
+                                                                                                                <td>  {{ items[a]['quantity'] }}</td>
+                                                                                                            <td> {{ items[a]['price'] }}</td>
+                                                                                                            </tr>
+                                                
+                                                
+
+
+                                                
+                                                                                                                                    {% endif %}                                                                   
+                                                
+                                                                                                                      
+                                                                                                                                      {% endfor %}
+                                                                                                                                      
+                                                                                                                                      
+                                                                                                                                      {% endif %}
+                                            </tbody>
+                                                                                                                                    </table>
+
+
+
+
+                                {% endif %}
+                                
+                        
+                                
+                        
+                                    {% endfor %}
+
+                                    
+                                    {% endif %}
+                    </div>
+                    </div>
+                    <div class = 'jumbotron'>
+                        <p><a href="/createlist">add another list</a></p></div>
+                </div>
+            </div>
+</div>
+
+
+        </div>
+
+        
+                                                                                                              {% endblock %}

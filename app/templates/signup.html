@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="col-sm-10">
+         {{ message.message }}
+    </div>
+
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+    
+    <form class="form-signup form" action="/signup" name="sign-up" method="post">
+
+        {{ form.hidden_tag() }}
+
+        <h2 class="form-heading">Andela Shopping List</h2>
+        <p>Please fill in the information below and proceed to enjoy the shopping list!</p>
+
+        <div class="input-wrap">
+            <div class="form-group">
+
+                <label for="username">Username</label>
+
+                {% for error in form.username.errors %}
+                [{{ error }}]
+                {% endfor %}<br>
+                {{ form.username(placeholder="pbasemera", class="form-control", required="required", id="username") }}
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                {{ form.email(placeholder="bsmrrachel@gmail.com", class="form-control", required="required", id="email", type="email") }}
+
+            </div>
+            <div class="form-group">
+
+                <label for="password">Password</label>
+
+                {% for error in form.password.errors %}
+                [{{ error }}]
+                {% endfor %}<br>
+                {{ form.password(placeholder="Enter Password", class="form-control", required="required", id="password") }}
+
+
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" required> I have read and agreed to the Andela Shopping list terms and conditions
+                </label>
+            </div>
+            <button type="submit">Sign Up</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+{% endblock %}
