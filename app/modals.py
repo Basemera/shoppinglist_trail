@@ -28,12 +28,13 @@ class shoppinglist(Abstract):
         self.userid = session['logged_in']['userid']
 
 class item(shoppinglist):
-    """A class to define and store a items object"""
-    def __init__(self, itemname, quantity, price, list_id):
-        self.itemname =itemname
-        self.quantity = quantity
-        self.price = price
-       
-        shoppinglist.list_id = list_id
-        self.item_id = self.generate_id('items')
-        self.userid = session['logged_in']['userid']
+	"""A class to define and store a items object"""
+	def __init__(self, itemname, quantity, price, list_id):
+		self.itemname =itemname
+		self.quantity = quantity
+		self.price = price
+		self.list_id = list_id
+
+		shoppinglist.list_id = list_id
+		self.item_id = self.generate_id('items')
+		self.userid = session['logged_in']['userid']
