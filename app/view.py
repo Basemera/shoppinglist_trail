@@ -174,8 +174,8 @@ def viewlist():
                            user=session["logged_in"]["userid"],
                            form_item = form_item)
 
-@app.route('/additem', methods= ['GET', 'POST'])
-def additem():
+@app.route('/additem/<id>', methods= ['GET', 'POST'])
+def additem(id):
     create_session_keys()
     if guest_redirect():
         return redirect(url_for("signin"))
@@ -184,7 +184,7 @@ def additem():
     
     if form.validate_on_submit():
         
-        new_item = item(form.itemname.data, form.quantity.data, form.price.data, form.list_id.data)
+        new_item = item(form.itemname.data, form.quantity.data, form.price.data, id)
         
         session["items"][new_item.item_id] = vars(new_item)
         
@@ -192,7 +192,7 @@ def additem():
                 "item successfully added"})
         return redirect(url_for('viewlist'))
 
-    return render_template('additem.html', form = form)
+    return render_template('additem.html', form = form, list_id=id)
 
 
 
