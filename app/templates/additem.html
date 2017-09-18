@@ -1,7 +1,7 @@
 {% extends "baseloggedin.html" %}
 {% block content %}
 
-            <form action = "additem" method = "post" name = "additem">
+            <form action = "/additem/{{ list_id }}" method = "post" name = "additem">
                 {{ form.hidden_tag() }}
                 <h2 class="form-heading">New item form</h2>                
                 
