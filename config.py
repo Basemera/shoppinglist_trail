@@ -6,4 +6,4 @@ WTF_CSRF_ENABLED = True
 
 # Enable Flask's debugging features. Should be False in production
 DEBUG = True
-SECRET_KEY = 'am so sick and tired'
+SECRET_KEY = 'im-actually-quite-aweome:)'
